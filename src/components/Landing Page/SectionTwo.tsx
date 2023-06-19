@@ -1,6 +1,6 @@
 import IMG1 from  '../../assets/Landing Page/Section2.1.png'
 import IMG2 from  '../../assets/Landing Page/Section2.2.png'
-import Hospital from '../../assets/Landing Page/hospital.jpg'
+import Hospital from '../../assets/Landing Page/hospital.png'
 import Doctor from '../../assets/Landing Page/chatDoctor.png'
 import Export from '../../assets/Landing Page/export.png'
 import Share from '../../assets/Landing Page/share.png'
@@ -36,7 +36,7 @@ const SectionTwo = () => {
                 <article className='bg-[#E0E4EC] text-center pt-2 pb-5 rounded-lg'>
                     <div className='w-1/2 mx-auto bg-red-500 border border-green-600'>
                         <div className='bg-[#08299B] w-[5rem] aspect-square rounded-full mx-auto'>
-                            <img src={Hospital} alt="Hospital" className='w-2/3 aspect-square mx-auto pt-2'/>
+                            <img src={Hospital} alt="Hospital" className='w-3/4 aspect-square mx-auto pt-2'/>
                         </div>
                         <p className='font-bold text-base py-3 text-center'>Search Doctors</p>
                         <p className='text-xs font-medium text-center py-3'>Effortlessly find the best hospital near you</p>
