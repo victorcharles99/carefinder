@@ -31,7 +31,7 @@ const SectionTwo = () => {
             </div>
 
             {/* Article Two */}
-            <section className='grid grid-cols-4 my-6 gap-3'>
+            <section className='grid grid-cols-4 my-6 pb-8 gap-3'>
                 {/* Card One */}
                 <article className='bg-[#E0E4EC] text-center ml-2 pt-2 pb-5 rounded-lg text-black'>
                     <div className='w-1/2 mx-auto'>
