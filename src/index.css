@@ -52,6 +52,10 @@ input {
   margin-bottom: 0.5rem;
   /* opacity: 0.8; */
 }
+
+input:focus {
+  outline: none;
+}
 /* 
 h1 {
   font-size: 3.2em;
