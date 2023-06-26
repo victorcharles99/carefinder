@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import LandingPage from "./components/Landing Page/LandingPage"
-import SignUp from "./components/Landing Page/SignUp"
+import SignUp from "./components/Auth/SignUp"
 
 const Root: React.FC = () => {
   return (

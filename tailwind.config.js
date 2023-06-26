@@ -2,8 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        Sthethoscope: "url('/src/assets/Auth/Stethoscope.png')",
+      },
+    },
   },
   plugins: [],
 };
-
