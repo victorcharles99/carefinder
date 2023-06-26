@@ -1,15 +1,17 @@
 import Navbar from "./components/Nav/Navbar"
-// import LandingPage from "./components/Landing Page/LandingPage"
-import {RouterProvider} from 'react-router-dom'
+// import {RouterProvider} from 'react-router-dom'
+import Root from "./Root"
 import Footer from "./components/Footer/Footer"
-import router from "./router/router"
+// import router from "./router/router"
+
 function App() {
 
   return (
     <>
     <Navbar/>
-    <RouterProvider router={router} />
+    <Root/>
     <Footer/>
+    {/* <RouterProvider router={router} /> */}
     </>
   )
 }
