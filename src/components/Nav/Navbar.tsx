@@ -10,10 +10,11 @@ const Navbar: React.FC = () => {
                 <li className="text-slate-900 p-3 ml-2"><Link to="/">Home</Link></li>
                 <li className="text-slate-900 p-3">About</li>
                 <li className="text-[#1E1E1E] p-3">Find Hospital</li>
-                <li className="text-white bg-[#08299B] rounded-xl py-3 px-7 ml-2">Login</li>
+                <li className="text-white bg-[#08299B] rounded-xl py-3 px-7 ml-2">
+                  <Link to="/login">Login</Link>
+                </li>
                 <li className="text-white bg-[#08299B] rounded-xl py-3 px-7 -mr-5">
                   <Link to="/signup">Signup</Link>
-                  {/* <a href="/signup"> Signup</a> */}
                 </li>
             </ul>
         </nav>
