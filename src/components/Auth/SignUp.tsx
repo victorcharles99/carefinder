@@ -4,23 +4,52 @@ import {FcGoogle} from 'react-icons/fc'
 import {BsApple} from 'react-icons/bs'
 import {FaFacebook} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import {auth} from '../../config/firebase' 
+import {auth} from '../../config/firebase'
+// import { useFirebaseApp, useAuth } from 'reactfire'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 
 const SignUp = () => {
 
+  // const firebaseApp = useFirebaseApp()
+  // const auth = useAuth()
+
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const navigate = useNavigate()
 
-  console.log(auth.currentUser.email
-    )
 
-  // const handleSignUp = (e: React.FormEvent<HTMLFormElement>) => {}
-   const handleSignUp = async () => {
+//   const handleSignup = async (e: React.FormEvent) => {
+//   e.preventDefault();
+//   const { email, password } = e.target as typeof e.target & {
+//     email: { value: string };
+//     password: { value: string };
+//   };                                    
+
+//   try {
+//     await auth.createUserWithEmailAndPassword(email.value, password.value);
+//     // Account created successfully
+//     // Redirect to the login page
+//     history.push('/login'); // Use the appropriate navigation method for your app (e.g., React Router)
+//   } catch (error) {
+//     // Handle any error that occurred during signup
+//     console.error('Signup Error:', error);
+//   }
+// };
+
+  // console.log(auth.currentUser.email)
+
+   const handleSignUp = async (e: React.FormEvent) => {
+    e.preventDefault()
+    try { 
       await createUserWithEmailAndPassword(auth, email, password)
+      navigate('/login')
+    } catch (err) {
+        console.error('Signup Error:', err)
+    }
    }
 
   return (
@@ -28,11 +57,12 @@ const SignUp = () => {
     <section className="bg-[#E0E4EC] text-black text-center text-xl h-auto w-full grid grid-cols-2">
       <article className="bg-white rounded-2xl ml-9 my-[4rem]">
         <h2 className='text-center font-bold text-4xl my-7'>Create An Account</h2>
-        <form className='flex flex-col gap-3 pl-7'>
+        <form onSubmit={handleSignUp} className='flex flex-col gap-3 pl-7'>
           <label htmlFor="name">Name</label>
           <input 
             type="text" 
             placeholder='Enter Name'
+            required
             onChange={(e) => setName(e.target.value)}
           />
 
@@ -40,6 +70,7 @@ const SignUp = () => {
           <input 
             type="email" 
             placeholder='Enter Email Address'
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
 
@@ -47,10 +78,11 @@ const SignUp = () => {
           <input 
             type="password" 
             placeholder='Enter Password'
+            required
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button onClick={handleSignUp} className='bg-[#08299B] text-white text-xl w-1/2 mx-auto p-2 rounded-xl'>Create Account</button>
+          <button className='bg-[#08299B] text-white text-xl w-1/2 mx-auto p-2 rounded-xl'>Create Account</button>
 
           <p className='w-1/2 mx-auto font-semibold text-2xl text-black'>OR</p>
             {/* ICONS  */}
