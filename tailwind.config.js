@@ -5,6 +5,12 @@ export default {
     extend: {
       backgroundImage: {
         Sthethoscope: "url('/src/assets/Auth/Stethoscope.png')",
+        BiggestEclipse:
+          "url('/src/assets/Landing Page/How it works/BiggestEclipse.png')",
+        BiggerEclipse:
+          "url('/src/assets/Landing Page/How it works/BiggerEclipse.png')",
+        BigEclipse:
+          "url('/src/assets/Landing Page/How it works/BigEclipse.png')",
       },
     },
   },

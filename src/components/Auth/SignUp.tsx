@@ -4,9 +4,8 @@ import {FcGoogle} from 'react-icons/fc'
 import {BsApple} from 'react-icons/bs'
 import {FaFacebook} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import {auth} from '../../config/firebase'
-// import { useFirebaseApp, useAuth } from 'reactfire'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import {auth, googleProvider, appleProvider} from '../../config/firebase'
+import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
@@ -22,25 +21,8 @@ const SignUp = () => {
   const navigate = useNavigate()
 
 
-//   const handleSignup = async (e: React.FormEvent) => {
-//   e.preventDefault();
-//   const { email, password } = e.target as typeof e.target & {
-//     email: { value: string };
-//     password: { value: string };
-//   };                                    
-
-//   try {
-//     await auth.createUserWithEmailAndPassword(email.value, password.value);
-//     // Account created successfully
-//     // Redirect to the login page
-//     history.push('/login'); // Use the appropriate navigation method for your app (e.g., React Router)
-//   } catch (error) {
-//     // Handle any error that occurred during signup
-//     console.error('Signup Error:', error);
-//   }
-// };
-
-  // console.log(auth.currentUser.email)
+  console.log(auth?.currentUser?.email)
+  // console.log(auth?.currentUser?.phoneNumber)
 
    const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -51,6 +33,36 @@ const SignUp = () => {
         console.error('Signup Error:', err)
     }
    }
+
+
+   const signInWithGoogle = async () => {
+    try { 
+      await signInWithPopup(auth, googleProvider)
+    } catch (err) {
+        console.error('Google Sign-in Error:', err)
+    }
+   }
+
+   const signInWithApple = async () => {
+    appleProvider.addScope('email')
+    appleProvider.addScope('name')
+
+    try { 
+      await signInWithPopup(auth, appleProvider)
+    } catch (err) {
+        console.error('Apple Sign-in Error:', err)
+    }
+   }
+
+   const logout = async () => {
+    try { 
+      await signOut(auth)
+    } catch (err) {
+        console.error('Signup Error:', err)
+    }
+   }
+
+   
 
   return (
     <>
@@ -85,14 +97,16 @@ const SignUp = () => {
           <button className='bg-[#08299B] text-white text-xl w-1/2 mx-auto p-2 rounded-xl'>Create Account</button>
 
           <p className='w-1/2 mx-auto font-semibold text-2xl text-black'>OR</p>
-            {/* ICONS  */}
+
+            {/* SIGNIN ICONS  */}
           <div className='w-1/2 mx-auto flex gap-6 justify-center'>
-            <FcGoogle size="35"/>
-            <BsApple color="#000" size="35"/>
+            <FcGoogle size="35" onClick={signInWithGoogle}/>
+            <BsApple color="#000" size="35" onClick={signInWithApple}/>
             <FaFacebook color="#1877F2" size="35"/>
           </div>
           <p className='my-3'>Already have an account? <Link to="/login" className='text-[#08299B]'>Login</Link></p>
         </form>
+          <button onClick={logout} className='bg-[#08299B] text-white text-xl w-1/2 mx-auto p-2 rounded-xl'>Logout</button>
       </article>
       <article className='bg-Sthethoscope'>
         <h1 className='text-[#08299B] text-4xl font-bold text-center py-8'>Carefinder</h1>
