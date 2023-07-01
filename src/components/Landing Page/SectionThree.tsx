@@ -13,10 +13,18 @@ import Arrow1 from '../../assets/Landing Page/How it works/Arrow 1.png'
 import Arrow2 from '../../assets/Landing Page/How it works/Arrow 2.png'
 import Arrow3 from '../../assets/Landing Page/How it works/Arrow 3.png'
 
+// Testimonial Images
+import Line from '../../assets/Landing Page/Testimonials/Line.png'
+import Sarah from '../../assets/Landing Page/Testimonials/Sarah.png'
+import John from '../../assets/Landing Page/Testimonials/John.png'
+import Emily from '../../assets/Landing Page/Testimonials/Emily.png'
+import Stars from '../../assets/Landing Page/Testimonials/Stars.png'
+
+
 
 const SectionThree = () => {
   return (
-    <section className="bg-white border border-red-500 text-black">
+    <section className="bg-white pt-3 text-black">
         {/* CARDS */}
         <section className='grid grid-cols-4 my-6 pb-8 gap-3'>
                 {/* Card One */}
@@ -63,7 +71,7 @@ const SectionThree = () => {
 
             {/* How It Works */}
 
-            <section className='  border border-green-500  overflow-hidden pb-[5rem] relative'>
+            <section className='overflow-hidden pb-[5rem] relative'>
                 <div className='absolute index-0 z-20 flex items-center justify-between w-4/5 h-full  mx-auto left-0 right-0'>
                     <div className=' ml-[3rem] -mt-[5rem] w-1/4'>
                         <img src={FindHospital} alt="Find Hospital" />
@@ -99,8 +107,48 @@ const SectionThree = () => {
                     </div>
                 </div>
 
-                
-                
+            </section>
+
+            {/* TESTIMONIALS */}
+
+            <section className="bg-white py-6">
+                <div className='w-1/2 mx-auto flex justify-center'>
+                    <img src={Line} alt="Line" />
+                    <h3 className="text-[#837D7D] text-xl ml-2 mt-4">Testimonials</h3>
+                </div>
+                <h1 className='text-[#08299B] text-3xl font-semibold w-1/2 mx-auto text-center capitalize py-4'>What our users say</h1>
+
+                {/* CARDS */}
+                <article className='py-3 grid grid-cols-3 gap-4 px-5 mx-auto'>
+                    <div className='bg-[#E0E4EC] px-[3rem] pt-[2.2rem] rounded-lg w-full h-auto'>
+                        <p className='text-base'>Finding the right hospital has never been easier! With this website, I was able to locate  a nearby hospital quickly ans efficiently. The search deature is user-friendly, and it provided me with all the essential information I needed.
+                            Highly recommended
+                        </p>
+                        <img src={Stars} alt="Stars" className='py-3 mt-3'/>
+                        <div className='flex pt-2 mt-8 self-end'>
+                            <img src={Sarah} alt="Sarah" />
+                            <h4 className='flex self-center ml-3'>Sarah M.</h4>
+                        </div>
+                    </div>
+                    <div className='bg-[#E0E4EC] px-[3rem] pt-[2.2rem] rounded-lg w-full h-auto'>
+                        <p className='text-base'>I can't express how grateful I am for carefinder website. When I needed urgent medical care while travelling, it helped me locate the nearest hospital in a matter of seconds. The accurate results and detailed directions saved me valuable time and ensured i received the care i needed.
+                        </p>
+                        <img src={Stars} alt="Stars" className='py-3'/>
+                        <div className='flex pt-2 pb-1 mt-5'>
+                            <img src={John} alt="John" />
+                            <h4 className='flex self-center ml-3'>John D.</h4>
+                        </div>
+                    </div>
+                    <div className='bg-[#E0E4EC] px-[3rem] pt-[2.2rem] rounded-lg w-full h-auto'>
+                        <p className='text-base'>I recently moved to a new city and had no idea where to go for medical assistance, my friend shared me some hospital details using the carefinder website. It made my life easier, i was able to find reputable hospitals near me effortlessly. The website's is user friendly interface and comprehensive search gave me peace of mind. I highly recommend.
+                        </p>
+                        <img src={Stars} alt="Stars" className='py-3'/>
+                        <div className='flex pt-2 pb-1'>
+                            <img src={Emily} alt="Emily" />
+                            <h4 className='flex self-center ml-3'>Emily T.</h4>
+                        </div>
+                    </div>
+                </article>
             </section>
     </section>
   )
