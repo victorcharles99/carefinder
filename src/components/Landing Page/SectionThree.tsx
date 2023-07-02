@@ -111,7 +111,7 @@ const SectionThree = () => {
 
             {/* TESTIMONIALS */}
 
-            <section className="bg-white py-6">
+            <section className="bg-white pt-6 pb-[9rem]">
                 <div className='w-1/2 mx-auto flex justify-center'>
                     <img src={Line} alt="Line" />
                     <h3 className="text-[#837D7D] text-xl ml-2 mt-4">Testimonials</h3>
