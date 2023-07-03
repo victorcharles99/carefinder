@@ -9,7 +9,9 @@ const Navbar: React.FC = () => {
             <ul className="list-none flex space-x-2 font-semibold text-xl justify-center ">
                 <li className="text-slate-900 p-3 ml-2"><Link to="/">Home</Link></li>
                 <li className="text-slate-900 p-3">About</li>
-                <li className="text-[#1E1E1E] p-3">Find Hospital</li>
+                <li className="text-[#1E1E1E] p-3">
+                   <Link to="/findhospital">Find Hospital</Link>
+                </li>
                 <li className="text-white bg-[#08299B] rounded-xl py-3 px-7 ml-2">
                   <Link to="/login">Login</Link>
                 </li>

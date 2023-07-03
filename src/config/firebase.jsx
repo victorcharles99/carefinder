@@ -23,3 +23,5 @@ export const googleProvider = new GoogleAuthProvider()
 
 export const appleProvider = new OAuthProvider('apple.com')
 
+export const facebookProvider = new OAuthProvider('facebook.com')
+

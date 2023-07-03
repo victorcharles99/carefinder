@@ -5,6 +5,7 @@ import LandingPage from "../components/Landing Page/LandingPage";
 import SignUp from "../components/Auth/SignUp.js";
 import Login from "../components/Auth/Login.js";
 import Root from '../Root.jsx'
+import FindHospital from "../components/FindHospital/FindHospital.js";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     {
       path: "/login",
       element: <Login/>
+    },
+    {
+      path: "/findhospital",
+      element: <FindHospital/>
     }
 ])
 

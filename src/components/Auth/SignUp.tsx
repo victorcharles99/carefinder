@@ -4,8 +4,8 @@ import {FcGoogle} from 'react-icons/fc'
 import {BsApple} from 'react-icons/bs'
 import {FaFacebook} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import {auth, googleProvider, appleProvider} from '../../config/firebase'
-import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import {auth, googleProvider, appleProvider, facebookProvider} from '../../config/firebase'
+import { createUserWithEmailAndPassword, signInWithPopup, signOut, signInWithRedirect} from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
@@ -22,6 +22,7 @@ const SignUp = () => {
 
 
   console.log(auth?.currentUser?.email)
+  console.log(auth?.currentUser?.photoURL)
   // console.log(auth?.currentUser?.phoneNumber)
 
    const handleSignUp = async (e: React.FormEvent) => {
@@ -54,9 +55,24 @@ const SignUp = () => {
     }
    }
 
+   const signInWithFacebook = async () => {
+          try {
+        const result = await signInWithRedirect(auth, facebookProvider);
+        if (result.user) {
+          console.log('Facebook sign-in successful:', result.user);
+        } else {
+          throw new Error("Failed to sign in");
+        }
+      } catch (error) {
+        console.error('Error signing in with Facebook:', error);
+
+      }
+    }
+
    const logout = async () => {
     try { 
       await signOut(auth)
+      console.log('User Logged  out')
     } catch (err) {
         console.error('Signup Error:', err)
     }
@@ -102,11 +118,12 @@ const SignUp = () => {
           <div className='w-1/2 mx-auto flex gap-6 justify-center'>
             <FcGoogle size="35" onClick={signInWithGoogle}/>
             <BsApple color="#000" size="35" onClick={signInWithApple}/>
-            <FaFacebook color="#1877F2" size="35"/>
+            <FaFacebook color="#1877F2" size="35" onClick={signInWithFacebook}/>
           </div>
           <p className='my-3'>Already have an account? <Link to="/login" className='text-[#08299B]'>Login</Link></p>
         </form>
-          <button onClick={logout} className='bg-[#08299B] text-white text-xl w-1/2 mx-auto p-2 rounded-xl'>Logout</button>
+        {/* <h2 className='h-screen text-center bg-red-500 text-white text-4xl'>Logged in successfully</h2> */}
+            <button onClick={logout} className='bg-[#08299B] text-white text-xl w-1/2 mx-auto p-2 rounded-xl'>Logout</button>
       </article>
       <article className='bg-Sthethoscope'>
         <h1 className='text-[#08299B] text-4xl font-bold text-center py-8'>Carefinder</h1>

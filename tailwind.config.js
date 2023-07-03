@@ -5,6 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         Sthethoscope: "url('/src/assets/Auth/Stethoscope.png')",
+        Map: "url('/src/assets/Landing Page/Find Hospital/Map.png')",
         BiggestEclipse:
           "url('/src/assets/Landing Page/How it works/BiggestEclipse.png')",
         BiggerEclipse:
