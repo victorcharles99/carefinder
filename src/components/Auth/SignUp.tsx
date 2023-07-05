@@ -8,7 +8,13 @@ import {auth, googleProvider, appleProvider, facebookProvider} from '../../confi
 import { createUserWithEmailAndPassword, signInWithPopup, signOut, signInWithRedirect} from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import AuthenticatedPage from './AuthenticatedPage'
 
+
+
+type UserProps = {
+  user : Record<string, unknown>
+}
 
 const SignUp = () => {
 
@@ -20,15 +26,24 @@ const SignUp = () => {
   const [password, setPassword] = useState<string>('')
   const navigate = useNavigate()
 
+    // const arrayUser =  [auth.currentUser]
+    // console.log(arrayUser);
+    const [user, setUser] = useState <UserProps | null>(null)
+    // const [user, setUser] = useState <UserCredential | null>(null)
+    const [loading, setLoading] =  useState(true)
+    console.log(user);
 
-  console.log(auth?.currentUser?.email)
-  console.log(auth?.currentUser?.photoURL)
+  // console.log(auth?.currentUser)11
+  // console.log(auth?.currentUser?.email)
+  // console.log(auth?.currentUser?.photoURL)
   // console.log(auth?.currentUser?.phoneNumber)
 
    const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault()
     try { 
-      await createUserWithEmailAndPassword(auth, email, password)
+       const userData =  await createUserWithEmailAndPassword(auth, email, password)
+       setUser(userData)
+       setLoading(false)
       navigate('/login')
     } catch (err) {
         console.error('Signup Error:', err)
@@ -38,7 +53,9 @@ const SignUp = () => {
 
    const signInWithGoogle = async () => {
     try { 
-      await signInWithPopup(auth, googleProvider)
+      const userData = await signInWithPopup(auth, googleProvider)
+      setUser(userData)
+      setLoading(false)
     } catch (err) {
         console.error('Google Sign-in Error:', err)
     }
@@ -82,8 +99,11 @@ const SignUp = () => {
 
   return (
     <>
+    {user ? <AuthenticatedPage user={user} /> : (
+
     <section className="bg-[#E0E4EC] text-black text-center text-xl h-auto w-full grid grid-cols-2">
       <article className="bg-white rounded-2xl ml-9 my-[4rem]">
+        
         <h2 className='text-center font-bold text-4xl my-7'>Create An Account</h2>
         <form onSubmit={handleSignUp} className='flex flex-col gap-3 pl-7'>
           <label htmlFor="name">Name</label>
@@ -132,10 +152,13 @@ const SignUp = () => {
         <div className='pb-12 pt-2'>
           <img src={Injection} alt="A nurse giving Injection to her patient" />
         </div>
+
       </article>
+      
     </section>
+    )}
     </>
   )
 }
 
-export default SignUp
+export default SignUp 
