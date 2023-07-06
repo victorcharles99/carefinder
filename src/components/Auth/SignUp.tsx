@@ -111,6 +111,8 @@ const SignUp = () => {
             type="text" 
             placeholder='Enter Name'
             required
+            minLength={6}
+            maxLength={12}
             onChange={(e) => setName(e.target.value)}
           />
 
@@ -127,6 +129,8 @@ const SignUp = () => {
             type="password" 
             placeholder='Enter Password'
             required
+            minLength={6}
+            maxLength={12}
             onChange={(e) => setPassword(e.target.value)}
           />
 
