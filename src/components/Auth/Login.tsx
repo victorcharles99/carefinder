@@ -1,7 +1,7 @@
 // import Stethoscope from '../../assets/Auth/Stethoscope.png'
 import Injection from '../../assets/Auth/Injection.png'
 import {FcGoogle} from 'react-icons/fc'
-import {BsApple} from 'react-icons/bs'
+import {AiOutlineTwitter} from 'react-icons/ai'
 import {FaFacebook} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
@@ -23,7 +23,7 @@ const Login = () => {
             {/* ICONS  */}
           <div className='w-1/2 mx-auto flex gap-6 justify-center'>
             <FcGoogle size="35"/>
-            <BsApple color="#000" size="35"/>
+            <AiOutlineTwitter color="#1DA1F2" size="35"/>
             <FaFacebook color="#1877F2" size="35"/>
           </div>
           <p className='mt-6'>Already have an account? <Link to="/signup" className='text-[#08299B]'>Signup!</Link></p>
